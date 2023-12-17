@@ -9,10 +9,77 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-        <Button Name="btnRandom" Content="Random" Click="btnRandom_Click"/>
-        <Button Grid.Row="1" Name="btnAll" Content="All Targets" Click="btnAll_Click"/>
-    </Grid>
+		<DockPanel Grid.Row="0" Grid.ColumnSpan="2">
+			<Menu DockPanel.Dock="Top">
+				<MenuItem Header="_File">
+					<MenuItem Header="_Connect" Click="Connect_Click" />
+				</MenuItem>									
+			</Menu>
+		</DockPanel>
+
+
+		<Grid Name="grdTargets" Grid.Row="1" Margin="0,5,0,5">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+
+			<Ellipse
+				Grid.Column="0"
+				HorizontalAlignment="Stretch"
+				Fill="Blue"
+				Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+				Margin="5,0,5,0"
+				Name="target4"/>
+
+			<Ellipse
+				Grid.Column="1"
+				HorizontalAlignment="Stretch"
+				Fill="Blue"
+				Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+				Margin="5,0,5,0"
+				Name="target3"/>
+
+			<Ellipse
+				Grid.Column="2"
+				HorizontalAlignment="Stretch"
+				Fill="Blue"
+				Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+				Margin="5,0,5,0"
+				Name="target2"/>
+
+			<Ellipse
+				Grid.Column="3"
+				HorizontalAlignment="Stretch"
+				Fill="Blue"
+				Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+				Margin="5,0,5,0"
+				Name="target1"/>
+
+			<Ellipse
+				Grid.Column="4"
+				HorizontalAlignment="Stretch"
+				Fill="Blue"
+				Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+				Margin="5,0,5,0"
+				Name="target0"/>
+		</Grid>
+
+		<DataGrid Grid.Row="2" Name="grdSplits" AutoGenerateColumns="False" >			
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Target ID" Binding="{Binding Path=TargetID}" IsReadOnly="True"/>
+				<DataGridTextColumn Header="Sensor Reading" Binding="{Binding Path=SensorReading}" IsReadOnly="True"/>
+				<DataGridTextColumn Header="Split" Binding="{Binding Path=Split}" IsReadOnly="True"/>
+
+			</DataGrid.Columns>
+
+		</DataGrid>
+	</Grid>
 </Window>
